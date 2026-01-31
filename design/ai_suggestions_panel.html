@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI Suggestions Panel (Light Mode - Retro Pastel Blue)</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Mono:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#A2D2FF", // Pastel Blue Accent
+                        "primary-hover": "#80BFFF", // More saturated blue for hover
+                        "primary-dark": "#1E3A8A", // Deep blue for text contrast
+                        "background-light": "#fffefb", // Warm white
+                        "background-dark": "#0f1115",
+                        "surface-dark": "#181b21",
+                        "border-dark": "#272a30",
+                    },
+                    fontFamily: {
+                        "sans": ["Inter", "sans-serif"],
+                        "mono": ["Space Mono", "monospace"],
+                    },
+                    borderRadius: {
+                        "none": "0px",
+                        "sm": "0px",
+                        "DEFAULT": "0px",
+                        "md": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "2xl": "0px",
+                        "3xl": "0px",
+                        "full": "9999px",
+                    },
+                    boxShadow: {
+                        'sharp': '4px 4px 0px 0px rgba(0,0,0,1)',
+                        'sharp-sm': '2px 2px 0px 0px rgba(0,0,0,1)',
+                        'sharp-hover': '6px 6px 0px 0px rgba(0,0,0,1)',
+                        'sharp-white': '4px 4px 0px 0px rgba(255,255,255,0.1)',
+                        'glow': '0 0 0px transparent', // Removed glow for solid retro feel
+                    }
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer utilities {
+            .bg-grid-pattern {
+                background-size: 20px 20px;
+                background-image: linear-gradient(to right, rgba(0,0,0,0.08) 1px, transparent 1px),
+                                  linear-gradient(to bottom, rgba(0,0,0,0.08) 1px, transparent 1px);
+            }
+            .dark .bg-grid-pattern {
+                background-image: linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+                                  linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+            }
+            .custom-scrollbar::-webkit-scrollbar {
+                width: 12px;
+            }
+            .custom-scrollbar::-webkit-scrollbar-track {
+                background: #f8f8f8;
+                border-left: 2px solid black;
+            }
+            .custom-scrollbar::-webkit-scrollbar-thumb {
+                background-color: #A2D2FF;
+                border: 2px solid black;
+                border-right: none;
+            }
+            .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+                background-color: #80BFFF;
+            }
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-sans flex items-start justify-center min-h-screen p-0 m-0 overflow-hidden bg-grid-pattern selection:bg-primary selection:text-black">
+<div class="hidden lg:flex flex-1 flex-col h-screen border-r-2 border-black dark:border-border-dark opacity-30 select-none pointer-events-none p-8 gap-6 transition-opacity">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-white dark:bg-surface-dark border-2 border-black dark:border-gray-700"></div>
+<div class="flex flex-col gap-2 w-1/3">
+<div class="h-4 bg-gray-200 dark:bg-surface-dark border border-black dark:border-transparent w-3/4"></div>
+<div class="h-4 bg-gray-200 dark:bg-surface-dark border border-black dark:border-transparent w-1/2"></div>
+</div>
+</div>
+<div class="w-full h-0.5 bg-black dark:bg-border-dark"></div>
+<div class="flex flex-col gap-6">
+<div class="self-start border-2 border-black dark:border-border-dark bg-white dark:bg-surface-dark p-4 max-w-md h-24 relative shadow-sharp-sm">
+<div class="absolute -left-1 -top-1 w-2 h-2 border-l-2 border-t-2 border-black"></div>
+</div>
+<div class="self-end border-2 border-black bg-primary/20 p-4 max-w-md h-16 relative shadow-sharp-sm">
+<div class="absolute -right-1 -bottom-1 w-2 h-2 border-r-2 border-b-2 border-black"></div>
+</div>
+<div class="self-start border-2 border-black dark:border-border-dark bg-white dark:bg-surface-dark p-4 max-w-md h-32 relative shadow-sharp-sm">
+<div class="absolute -left-1 -top-1 w-2 h-2 border-l-2 border-t-2 border-black"></div>
+</div>
+</div>
+</div>
+<div class="w-full max-w-[420px] h-screen bg-white dark:bg-[#111316] border-l-2 border-black dark:border-border-dark flex flex-col shadow-[rgba(0,0,0,0.2)_0px_0px_20px] relative z-10">
+<div class="absolute inset-0 bg-grid-pattern pointer-events-none opacity-50 z-[-1]"></div>
+<div class="flex items-center justify-between px-6 py-5 border-b-2 border-black dark:border-border-dark bg-white dark:bg-[#111316]">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 flex items-center justify-center bg-black dark:bg-white border-2 border-transparent">
+<span class="material-symbols-outlined text-white dark:text-black" style="font-size: 20px;">smart_toy</span>
+</div>
+<h3 class="text-black dark:text-white text-lg font-mono font-bold uppercase tracking-tight">AI Assistant<span class="text-primary dark:text-primary">.</span></h3>
+</div>
+<button class="text-black hover:bg-primary/20 hover:border-black dark:hover:text-primary transition-all p-1 border-2 border-transparent">
+<span class="material-symbols-outlined" style="font-size: 24px;">close</span>
+</button>
+</div>
+<div class="px-6 py-5 space-y-5 bg-white dark:bg-[#111316]">
+<label class="group flex flex-col h-11 w-full relative">
+<div class="flex w-full flex-1 items-stretch bg-white dark:bg-[#181b21] border-2 border-black dark:border-gray-700 shadow-sharp-sm group-focus-within:translate-x-[2px] group-focus-within:translate-y-[2px] group-focus-within:shadow-none transition-all">
+<div class="text-black dark:text-white flex items-center justify-center pl-3">
+<span class="material-symbols-outlined" style="font-size: 20px;">search</span>
+</div>
+<input class="flex w-full min-w-0 flex-1 resize-none overflow-hidden bg-transparent border-none text-black dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-600 px-3 text-sm font-mono focus:ring-0 uppercase" placeholder="Search..."/>
+</div>
+</label>
+<div class="flex w-full items-center gap-2">
+<label class="cursor-pointer flex-1">
+<input checked="" class="peer hidden" name="tab-view" type="radio" value="All"/>
+<div class="flex items-center justify-center py-2 px-3 border-2 border-black dark:border-gray-700 bg-white dark:bg-[#181b21] text-black dark:text-gray-400 text-xs font-mono font-bold uppercase tracking-wide transition-all peer-checked:bg-black peer-checked:text-primary peer-checked:shadow-sharp-sm hover:bg-primary hover:shadow-sharp-sm dark:peer-checked:bg-white dark:peer-checked:text-black hover:-translate-y-0.5 active:translate-y-0 active:shadow-none">
+                    All
+                </div>
+</label>
+<label class="cursor-pointer flex-1">
+<input class="peer hidden" name="tab-view" type="radio" value="Products"/>
+<div class="flex items-center justify-center py-2 px-3 border-2 border-black dark:border-gray-700 bg-white dark:bg-[#181b21] text-black dark:text-gray-400 text-xs font-mono font-bold uppercase tracking-wide transition-all peer-checked:bg-black peer-checked:text-primary peer-checked:shadow-sharp-sm hover:bg-primary hover:shadow-sharp-sm dark:peer-checked:bg-white dark:peer-checked:text-black hover:-translate-y-0.5 active:translate-y-0 active:shadow-none">
+                    Products
+                </div>
+</label>
+<label class="cursor-pointer flex-1">
+<input class="peer hidden" name="tab-view" type="radio" value="Responses"/>
+<div class="flex items-center justify-center py-2 px-3 border-2 border-black dark:border-gray-700 bg-white dark:bg-[#181b21] text-black dark:text-gray-400 text-xs font-mono font-bold uppercase tracking-wide transition-all peer-checked:bg-black peer-checked:text-primary peer-checked:shadow-sharp-sm hover:bg-primary hover:shadow-sharp-sm dark:peer-checked:bg-white dark:peer-checked:text-black hover:-translate-y-0.5 active:translate-y-0 active:shadow-none">
+                    Responses
+                </div>
+</label>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto px-6 pb-6 space-y-8 custom-scrollbar">
+<div class="flex flex-col gap-4">
+<div class="flex items-end justify-between border-b-2 border-black dark:border-border-dark pb-2">
+<h2 class="text-black dark:text-white text-xs font-mono font-bold uppercase tracking-widest">Recommended Products</h2>
+<span class="text-[10px] font-mono text-black dark:text-black bg-primary border-2 border-black dark:border-transparent px-1.5 py-0.5 shadow-sharp-sm">CTX: RUNNING</span>
+</div>
+<div class="group flex flex-col bg-white dark:bg-[#181b21] border-2 border-black dark:border-border-dark p-4 relative shadow-sharp hover:shadow-sharp-hover dark:shadow-none transition-all duration-200 hover:-translate-y-0.5">
+<div class="flex gap-4 mb-4">
+<div class="w-20 h-20 shrink-0 bg-white dark:bg-black border-2 border-black dark:border-gray-700 relative" data-alt="Nike Air Zoom running shoe thumbnail">
+<img alt="Running Shoe" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvjsJWFH9LM3qJtZLDfU0re06yjB9n-2vPynYzucZosC75iNQTvh19hpKVY42JVtY86MNCdPws65lhgUnhzmyfc11_0eXUx9t-63krRxJSk2P7sr5-gkc-P7l6FxOmaD5WShcU5zzc02rCkCq30RmTb0p9hTibe_vn8hrgrXGL1i584PoYjHFxWwFfb5_I_2ILqlrlY1AdNUixIW26BOG37QbJCLx1I7Q854NWRuhH9l_4oM_WQot_bLIAjQyBV_t9g-YizXyIIs8"/>
+</div>
+<div class="flex flex-col flex-1 min-w-0 justify-between">
+<div>
+<div class="flex justify-between items-start">
+<h4 class="text-black dark:text-white text-sm font-bold truncate font-mono">Nike Pegasus 40</h4>
+<span class="bg-black text-white px-1 font-mono font-bold text-xs">$120</span>
+</div>
+<p class="text-gray-600 dark:text-gray-400 text-xs mt-1 font-mono">Men's Road Running Shoes</p>
+</div>
+<div class="flex items-center gap-2 mt-2">
+<span class="inline-flex items-center bg-primary/20 border-2 border-primary px-1.5 py-0.5 text-[10px] font-mono uppercase text-black font-bold">
+                                In Stock
+                            </span>
+</div>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="flex-1 h-9 flex items-center justify-center bg-primary hover:bg-primary-hover text-black text-xs font-mono font-bold uppercase transition-all border-2 border-black shadow-sharp active:translate-x-[2px] active:translate-y-[2px] active:shadow-none">
+                        Insert Link
+                    </button>
+<div class="flex items-center gap-2">
+<button class="h-9 w-9 flex items-center justify-center border-2 border-black dark:border-gray-700 hover:bg-black hover:text-primary transition-colors bg-white dark:bg-transparent shadow-sharp active:translate-x-[2px] active:translate-y-[2px] active:shadow-none">
+<span class="material-symbols-outlined" style="font-size: 18px;">thumb_up</span>
+</button>
+</div>
+</div>
+</div>
+<div class="group flex flex-col bg-white dark:bg-[#181b21] border-2 border-black dark:border-border-dark p-4 relative shadow-sharp hover:shadow-sharp-hover dark:shadow-none transition-all duration-200 hover:-translate-y-0.5">
+<div class="flex gap-4 mb-4">
+<div class="w-20 h-20 shrink-0 bg-white dark:bg-black border-2 border-black dark:border-gray-700 relative" data-alt="Adidas Ultraboost running shoe thumbnail">
+<img alt="Running Shoe" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZf5_lyRYAsrF8oy-WkYRKEvyNto-s03BZ3XEtxOhHvK2y18DrafErXbV7lZ_ASBGbvzR59enejXQEJZjS37q8DiuynFyVfUSlMN8LTwelrisN3SbxDunUJJkmS8yPD_S8XqrqLtbqKCuJMlJLkYogIA4KPGfPmXt0dekhSg6INx4qh6R36aNkwj7sqImowepwa_hntFZFwKuLWzl9vU-ExqF5iwg6rbmxtxodkVybVYyd0sDyYXS3R--LfbIc8Oj3y_FUf-3dUr0"/>
+</div>
+<div class="flex flex-col flex-1 min-w-0 justify-between">
+<div>
+<div class="flex justify-between items-start">
+<h4 class="text-black dark:text-white text-sm font-bold truncate font-mono">Ultraboost Light</h4>
+<span class="bg-black text-white px-1 font-mono font-bold text-xs">$140</span>
+</div>
+<p class="text-gray-600 dark:text-gray-400 text-xs mt-1 font-mono">Men's Running Shoes</p>
+</div>
+<div class="flex items-center gap-2 mt-2">
+<span class="inline-flex items-center bg-yellow-100 dark:bg-yellow-900/20 border-2 border-black dark:border-yellow-700 px-1.5 py-0.5 text-[10px] font-mono uppercase text-black font-bold">
+                                Low Stock
+                            </span>
+</div>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="flex-1 h-9 flex items-center justify-center bg-white hover:bg-gray-50 text-black border-2 border-black text-xs font-mono font-bold uppercase transition-all shadow-sharp active:translate-x-[2px] active:translate-y-[2px] active:shadow-none hover:bg-black hover:text-white">
+                        Insert Link
+                    </button>
+<div class="flex items-center gap-2">
+<button class="h-9 w-9 flex items-center justify-center border-2 border-black dark:border-gray-700 hover:bg-black hover:text-primary transition-colors bg-white dark:bg-transparent shadow-sharp active:translate-x-[2px] active:translate-y-[2px] active:shadow-none">
+<span class="material-symbols-outlined" style="font-size: 18px;">thumb_up</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex items-end justify-between border-b-2 border-black dark:border-border-dark pb-2">
+<h2 class="text-black dark:text-white text-xs font-mono font-bold uppercase tracking-widest">Suggested Responses</h2>
+<span class="text-[10px] font-mono text-black dark:text-black bg-primary border-2 border-black dark:border-transparent px-1.5 py-0.5 shadow-sharp-sm">TONE: PRO</span>
+</div>
+<div class="flex flex-col gap-3 bg-white dark:bg-[#181b21] border-2 border-black dark:border-border-dark p-4 shadow-sharp hover:shadow-sharp-hover transition-all duration-200 hover:-translate-y-0.5">
+<div class="flex items-center justify-between">
+<span class="text-[10px] font-mono font-bold text-black uppercase tracking-wider border-2 border-black px-1.5 py-0.5 bg-primary">Greeting</span>
+</div>
+<p class="text-black dark:text-gray-300 text-sm font-medium leading-relaxed font-sans border-l-4 border-primary pl-3">
+                    Hi [Name], happy to help with that order! How can I assist you today?
+                </p>
+<div class="flex gap-3 pt-2">
+<button class="flex-1 h-8 flex items-center justify-center gap-2 bg-primary hover:bg-primary-hover text-black text-[11px] font-mono font-bold uppercase transition-colors border-2 border-black shadow-sharp-sm active:shadow-none active:translate-x-[1px] active:translate-y-[1px]">
+<span class="material-symbols-outlined" style="font-size: 14px;">send</span>
+                        Insert
+                    </button>
+<button class="h-8 w-8 flex items-center justify-center bg-white dark:bg-transparent border-2 border-black hover:bg-black hover:text-white transition-colors shadow-sharp-sm active:shadow-none active:translate-x-[1px] active:translate-y-[1px]" title="Copy">
+<span class="material-symbols-outlined" style="font-size: 14px;">content_copy</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col gap-3 bg-white dark:bg-[#181b21] border-2 border-black dark:border-border-dark p-4 shadow-sharp hover:shadow-sharp-hover transition-all duration-200 hover:-translate-y-0.5">
+<div class="flex items-center justify-between">
+<span class="text-[10px] font-mono font-bold text-black uppercase tracking-wider border-2 border-black px-1.5 py-0.5 bg-gray-100">Return Policy</span>
+</div>
+<p class="text-black dark:text-gray-300 text-sm font-medium leading-relaxed font-sans border-l-4 border-black pl-3">
+                    Our return window is 30 days from the date of delivery. Would you like me to generate a return label for you?
+                </p>
+<div class="flex gap-3 pt-2">
+<button class="flex-1 h-8 flex items-center justify-center gap-2 bg-white hover:bg-black hover:text-white text-black border-2 border-black text-[11px] font-mono font-bold uppercase transition-colors shadow-sharp-sm active:shadow-none active:translate-x-[1px] active:translate-y-[1px]">
+<span class="material-symbols-outlined" style="font-size: 14px;">edit</span>
+                        Draft
+                    </button>
+<button class="h-8 w-8 flex items-center justify-center bg-white dark:bg-transparent border-2 border-black hover:bg-black hover:text-white transition-colors shadow-sharp-sm active:shadow-none active:translate-x-[1px] active:translate-y-[1px]" title="Copy">
+<span class="material-symbols-outlined" style="font-size: 14px;">content_copy</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col gap-3 bg-white dark:bg-[#181b21] border-2 border-black dark:border-border-dark p-4 shadow-sharp hover:shadow-sharp-hover transition-all duration-200 hover:-translate-y-0.5 opacity-90 hover:opacity-100">
+<div class="flex items-center justify-between">
+<span class="text-[10px] font-mono font-bold text-black uppercase tracking-wider border-2 border-black px-1.5 py-0.5 bg-gray-100">Apology</span>
+</div>
+<p class="text-black dark:text-gray-300 text-sm font-medium leading-relaxed font-sans border-l-4 border-black pl-3">
+                    I apologize for the inconvenience. Let me check the status of your shipment right away.
+                </p>
+<div class="flex gap-3 pt-2">
+<button class="flex-1 h-8 flex items-center justify-center gap-2 bg-white hover:bg-black hover:text-white text-black border-2 border-black text-[11px] font-mono font-bold uppercase transition-colors shadow-sharp-sm active:shadow-none active:translate-x-[1px] active:translate-y-[1px]">
+<span class="material-symbols-outlined" style="font-size: 14px;">edit</span>
+                        Draft
+                    </button>
+</div>
+</div>
+</div>
+</div>
+<div class="px-6 py-4 border-t-2 border-black dark:border-border-dark flex justify-between items-center bg-gray-50 dark:bg-[#111316]">
+<div class="flex items-center gap-2 text-[10px] font-mono uppercase text-black dark:text-gray-500 tracking-wide">
+<span class="material-symbols-outlined text-black dark:text-primary" style="font-size: 14px;">bolt</span>
+<span>AI Engine v2.0</span>
+</div>
+<button class="text-black hover:rotate-90 transition-transform">
+<span class="material-symbols-outlined" style="font-size: 18px;">settings</span>
+</button>
+</div>
+</div>
+
+</body></html>

@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Orders - OmniSupport AI</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#89CFF0", // Retro Pastel Blue (Baby Blue)
+                        "primary-hover": "#7ABBE0", // Slightly darker shade for hover states
+                        "primary-text": "#0F172A", // Dark text for better contrast on light pastel
+                        "background-light": "#f8fafc", // Very subtle off-white for a cleaner, lighter feel
+                        "background-dark": "#0f0f11",
+                        "surface-dark": "#18181b",
+                        "grid-line": "rgba(0,0,0,0.06)",
+                        "grid-line-dark": "rgba(255,255,255,0.06)",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "mono": ["Space Mono", "monospace"],
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .bg-grid-pattern {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+                              linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+        }
+        .dark .bg-grid-pattern {
+            background-image: linear-gradient(to right, var(--grid-line-dark) 1px, transparent 1px),
+                              linear-gradient(to bottom, var(--grid-line-dark) 1px, transparent 1px);
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style type="text/tailwindcss">
+        :root {
+            --grid-line: rgba(0,0,0,0.06);
+            --grid-line-dark: rgba(255,255,255,0.06);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white transition-colors duration-200 bg-grid-pattern">
+<div class="flex min-h-screen w-full flex-col overflow-x-hidden backdrop-blur-[1px]">
+<header class="flex items-center justify-between border-b border-solid border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md px-10 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-slate-900 dark:text-white">
+<div class="size-8 text-primary">
+<div class="w-8 h-8 bg-primary rounded-sm flex items-center justify-center text-primary-text font-bold text-xl shadow-[2px_2px_0px_0px_rgba(0,0,0,0.1)] border border-slate-900/10">
+                            O
+                        </div>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] font-mono">OmniSupport.</h2>
+</div>
+<label class="flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full ring-1 ring-slate-200 dark:ring-slate-700 focus-within:ring-primary dark:focus-within:ring-primary transition-all">
+<div class="text-slate-500 dark:text-[#9da8b9] flex border-none bg-transparent items-center justify-center pl-4 rounded-l-lg border-r-0">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-slate-900 dark:text-white focus:outline-0 focus:ring-0 border-none bg-transparent focus:border-none h-full placeholder:text-slate-400 dark:placeholder:text-[#64748b] px-4 rounded-l-none border-l-0 pl-2 text-sm font-normal leading-normal" placeholder="Search..." value=""/>
+</div>
+</label>
+</div>
+<div class="flex flex-1 justify-end gap-8">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border border-slate-200 dark:border-slate-700" data-alt="User profile picture showing a friendly professional" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAsXj0w8DvRsMvZPRkfBtEKkzijHEVDy6UYMG54bw2TeT5bYHpqvekwjb0xs9ZevWAwsNnDxiOKvqogc-_I0bkgtIu_bbyxFR5YLLA5VpLOAnV62bRwEUAuVsk7rLx4Xcsmb-XyRR_rGE1Xz1HRfybpDDFgas98OZLEi3jGRiwKZVJsKGHt_7gWgjZtg5fMCXIC7WkJUWPuHhzSwj3yWsbcSdW0fmaUpBwfd_heK4FJC16uoWHMe5LVDv8UZaYx0zsnksZl92Dp6mk");'></div>
+</div>
+</header>
+<div class="layout-container flex h-full grow flex-col md:flex-row">
+<div class="hidden md:flex w-72 flex-col border-r border-solid border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-background-dark/50 p-4 shrink-0 backdrop-blur-sm">
+<div class="flex flex-col gap-4">
+<div class="flex gap-3 mb-6 p-2">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-md size-12 shadow-[2px_2px_0px_0px_rgba(0,0,0,0.05)] border border-slate-200 dark:border-slate-700" data-alt="Company logo for admin console" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDkoZC-Ssa0NdWkXkOiO-Ve2I_PtBzFRKSPiM96q6ZhbvlowJILClVTxUhzxoLXIzO-VFj2W7ZqPUivsxHQmshi2Na_S0Nhc6aEK36DqcZhQmaYphBCxNRdWmnWkznvNy76S24Wi8ACJaPE07pje2vrzOsX1rNT9GQqHPc3DoR4arpCcgOYyAKK8Hjhwncihk1z-N4KVoWBCPTsxulJdaXKz2ANvklsHYlJEdGrAdLMdpYH_VvgOWdbzmSPq76fiDd01w5bi-7YdnY");'></div>
+<div class="flex flex-col justify-center">
+<h1 class="text-slate-900 dark:text-white text-base font-bold leading-normal">Admin Console</h1>
+<p class="text-slate-500 dark:text-[#9da8b9] text-xs font-normal leading-normal font-mono">admin@omnisupport.com</p>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-3 px-3 py-2.5 rounded hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer transition-colors text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<p class="text-sm font-medium leading-normal">Dashboard</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2.5 rounded hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer transition-colors text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white">
+<span class="material-symbols-outlined text-[20px]">chat_bubble</span>
+<p class="text-sm font-medium leading-normal">Inbox</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2.5 rounded bg-slate-50 dark:bg-white/5 text-slate-900 dark:text-white border-l-4 border-primary">
+<span class="material-symbols-outlined text-[20px] fill-current">shopping_bag</span>
+<p class="text-sm font-bold leading-normal">Orders</p>
+</div>
+<div class="my-2 border-b border-slate-200 dark:border-slate-800"></div>
+<div class="flex items-center gap-3 px-3 py-2.5 rounded hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer transition-colors text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white">
+<span class="material-symbols-outlined text-[20px]">extension</span>
+<p class="text-sm font-medium leading-normal">Integrations</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2.5 rounded hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer transition-colors text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+<p class="text-sm font-medium leading-normal">Settings</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2.5 rounded hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer transition-colors text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white">
+<span class="material-symbols-outlined text-[20px]">group</span>
+<p class="text-sm font-medium leading-normal">Team</p>
+</div>
+</div>
+</div>
+<div class="mt-auto pt-6">
+<div class="bg-slate-50 dark:bg-slate-800/30 rounded p-4 border border-slate-200 dark:border-slate-800 shadow-[2px_2px_0px_0px_rgba(0,0,0,0.05)]">
+<p class="text-slate-900 dark:text-white text-sm font-semibold mb-1">Need help?</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs mb-3">Check our documentation for integration guides.</p>
+<button class="text-slate-900 dark:text-white border-b-2 border-primary/50 text-xs font-bold hover:text-primary hover:border-primary transition-colors">View Docs</button>
+</div>
+</div>
+</div>
+<div class="flex flex-1 justify-center py-5 overflow-y-auto">
+<div class="layout-content-container flex flex-col max-w-[1200px] flex-1 px-4 md:px-8">
+<div class="flex flex-col md:flex-row md:items-start justify-between gap-4 p-4 mb-2">
+<div class="flex flex-col gap-2">
+<h1 class="text-slate-900 dark:text-white text-4xl md:text-5xl font-black leading-tight tracking-[-0.033em] font-mono">Orders.</h1>
+<p class="text-slate-500 dark:text-[#9da8b9] text-base font-normal leading-normal max-w-2xl mt-2">Manage customer orders, track status, and link to support conversations directly.</p>
+</div>
+<button class="flex shrink-0 cursor-pointer items-center justify-center overflow-hidden rounded bg-white dark:bg-surface-dark hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-white text-sm font-bold leading-normal tracking-[0.015em] border border-slate-200 dark:border-slate-700 hover:border-primary dark:hover:border-primary transition-colors shadow-[2px_2px_0px_0px_rgba(0,0,0,0.05)] h-10 px-4 group">
+<span class="material-symbols-outlined text-[20px] mr-2 group-hover:text-primary transition-colors">download</span>
+<span class="truncate">Export CSV</span>
+</button>
+</div>
+<div class="px-4 py-2 mb-8">
+<div class="flex flex-col md:flex-row gap-4 items-center justify-between">
+<label class="flex flex-col min-w-40 h-12 w-full md:w-96">
+<div class="flex w-full flex-1 items-stretch rounded h-full ring-1 ring-slate-200 dark:ring-slate-700 bg-white dark:bg-surface-dark shadow-sm focus-within:ring-primary dark:focus-within:ring-primary transition-all">
+<div class="text-slate-400 dark:text-[#9da8b9] flex border-none bg-transparent items-center justify-center pl-4 rounded-l border-r-0">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded text-slate-900 dark:text-white focus:outline-0 focus:ring-0 border-none bg-transparent focus:border-none h-full placeholder:text-slate-400 dark:placeholder:text-[#64748b] px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal" placeholder="Search orders, customers..." value=""/>
+</div>
+</label>
+<div class="flex gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 scrollbar-hide">
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded bg-primary text-primary-text pl-4 pr-4 transition-transform hover:-translate-y-0.5 shadow-[2px_2px_0px_0px_rgba(0,0,0,0.1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.2)] border border-primary dark:border-white font-bold">
+<p class="text-sm leading-normal">All</p>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded bg-white dark:bg-surface-dark text-slate-600 dark:text-white hover:bg-slate-50 dark:hover:bg-slate-800 hover:border-primary dark:hover:border-primary pl-4 pr-4 transition-colors border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md">
+<p class="text-sm font-medium leading-normal">Processing</p>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded bg-white dark:bg-surface-dark text-slate-600 dark:text-white hover:bg-slate-50 dark:hover:bg-slate-800 hover:border-primary dark:hover:border-primary pl-4 pr-4 transition-colors border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md">
+<p class="text-sm font-medium leading-normal">Shipped</p>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded bg-white dark:bg-surface-dark text-slate-600 dark:text-white hover:bg-slate-50 dark:hover:bg-slate-800 hover:border-primary dark:hover:border-primary pl-4 pr-4 transition-colors border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md">
+<p class="text-sm font-medium leading-normal">Delivered</p>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded bg-white dark:bg-surface-dark text-slate-600 dark:text-white hover:bg-slate-50 dark:hover:bg-slate-800 hover:border-primary dark:hover:border-primary pl-4 pr-4 transition-colors border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md">
+<p class="text-sm font-medium leading-normal">Returns</p>
+</button>
+</div>
+</div>
+</div>
+<div class="px-4 pb-12">
+<div class="w-full bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-800 rounded-lg shadow-sm overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse min-w-[800px]">
+<thead>
+<tr class="bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-700 text-xs uppercase text-slate-500 font-mono tracking-wider">
+<th class="p-4 font-bold">Order ID</th>
+<th class="p-4 font-bold">Date</th>
+<th class="p-4 font-bold">Customer</th>
+<th class="p-4 font-bold">Channel</th>
+<th class="p-4 font-bold">Status</th>
+<th class="p-4 font-bold text-right">Total</th>
+<th class="p-4 font-bold"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors group">
+<td class="p-4">
+<span class="font-mono font-bold text-slate-900 dark:text-white bg-slate-100 dark:bg-white/10 px-2 py-1 rounded">#ORD-9924</span>
+</td>
+<td class="p-4 text-slate-500 text-sm font-mono">Oct 24, 2023</td>
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-gradient-to-br from-blue-100 to-indigo-100 dark:from-blue-900 dark:to-indigo-900 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-xs font-bold text-slate-700 dark:text-slate-300 shadow-sm">JD</div>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-slate-900 dark:text-white">John Doe</span>
+<span class="text-xs text-slate-500 font-mono">john@example.com</span>
+</div>
+</div>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-2 text-sm font-medium text-slate-700 dark:text-slate-300">
+<div class="w-6 h-6 rounded bg-white dark:bg-black border border-slate-100 dark:border-slate-700 flex items-center justify-center p-0.5 shadow-sm">
+<img alt="Shopify" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDHahhZggMhKJNnUZzRsaH7NP4mmpIyUtrTcci8QmsaHL1qUAbm6OZ3kVsJESY9XrcB6e_lfiRJX-3X6f3QveIbReqegyJoHSQBrMc5DM7xXRgzVr_0byXI001spNMDedAEgZpHdtign5j7Olj_S4mP3yeneCgDuXDMCptm9EuRbmf-4sYHgI2UKR-I6pwVii1smk6WATKvKYccgQLIBICGVK0FUSLPSNtr4lLw8D0nuKYT_MpoG8fjGE0YcmCQzocpDExJGuAryY"/>
+</div>
+                                                    Shopify
+                                                </div>
+</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2.5 py-1 rounded text-xs font-bold bg-amber-50 text-amber-700 border border-amber-200 dark:bg-amber-900/30 dark:text-amber-300 dark:border-amber-800 uppercase tracking-wide shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-500 mr-2 animate-pulse"></span>
+                                                    Processing
+                                                </span>
+</td>
+<td class="p-4 text-right font-mono font-bold text-slate-900 dark:text-white">$124.00</td>
+<td class="p-4 text-right">
+<button class="inline-flex items-center justify-center w-8 h-8 rounded border border-slate-200 dark:border-slate-700 text-slate-400 hover:text-primary hover:border-primary transition-all bg-white dark:bg-surface-dark shadow-[2px_2px_0px_0px_rgba(0,0,0,0.05)] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,0.05)] hover:translate-y-[1px] hover:translate-x-[1px]">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors group">
+<td class="p-4">
+<span class="font-mono font-bold text-slate-900 dark:text-white bg-slate-100 dark:bg-white/10 px-2 py-1 rounded">#ORD-9923</span>
+</td>
+<td class="p-4 text-slate-500 text-sm font-mono">Oct 24, 2023</td>
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-gradient-to-br from-pink-100 to-rose-100 dark:from-pink-900 dark:to-rose-900 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-xs font-bold text-slate-700 dark:text-slate-300 shadow-sm">SC</div>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-slate-900 dark:text-white">Sarah Connor</span>
+<span class="text-xs text-slate-500 font-mono">sarah@skynet.com</span>
+</div>
+</div>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-2 text-sm font-medium text-slate-700 dark:text-slate-300">
+<div class="w-6 h-6 rounded bg-white dark:bg-black border border-slate-100 dark:border-slate-700 flex items-center justify-center p-0.5 shadow-sm">
+<img alt="Instagram" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtGPSp7vFX0inPgcByFh0MnyOI_dNwxkmtjKfqOVCNhp_o65v-yMkr6m_f_5XOCQzFmvmhU8QkuEMIIpHZ-7dhZZ0Lzkizt_M4N_NKIUShyEFcQE3ckTA2O2o4qg5Iv6e6ORba6YHhNkiTppZW2Y_IDTxIRaAieHD09tAVHb-Et5NyZJgnCjaTjSTiLKZYRjnXDmCBRcXnqs6x8l5HoJSRw5ZBY7rfy63BierFZoxiid_M0PYwdMloIF4eJsEqXyUWS4TRHXNaFz4"/>
+</div>
+                                                    Instagram
+                                                </div>
+</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2.5 py-1 rounded text-xs font-bold bg-primary/20 text-slate-900 border border-primary/40 dark:text-primary dark:border-primary/50 uppercase tracking-wide shadow-sm">
+                                                    Shipped
+                                                </span>
+</td>
+<td class="p-4 text-right font-mono font-bold text-slate-900 dark:text-white">$45.50</td>
+<td class="p-4 text-right">
+<button class="inline-flex items-center justify-center w-8 h-8 rounded border border-slate-200 dark:border-slate-700 text-slate-400 hover:text-primary hover:border-primary transition-all bg-white dark:bg-surface-dark shadow-[2px_2px_0px_0px_rgba(0,0,0,0.05)] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,0.05)] hover:translate-y-[1px] hover:translate-x-[1px]">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors group">
+<td class="p-4">
+<span class="font-mono font-bold text-slate-900 dark:text-white bg-slate-100 dark:bg-white/10 px-2 py-1 rounded">#ORD-9922</span>
+</td>
+<td class="p-4 text-slate-500 text-sm font-mono">Oct 23, 2023</td>
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-gradient-to-br from-emerald-100 to-teal-100 dark:from-emerald-900 dark:to-teal-900 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-xs font-bold text-slate-700 dark:text-slate-300 shadow-sm">JB</div>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-slate-900 dark:text-white">James Bond</span>
+<span class="text-xs text-slate-500 font-mono">007@mi6.gov</span>
+</div>
+</div>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-2 text-sm font-medium text-slate-700 dark:text-slate-300">
+<div class="w-6 h-6 rounded bg-white dark:bg-black border border-slate-100 dark:border-slate-700 flex items-center justify-center p-0.5 shadow-sm">
+<img alt="WooCommerce" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_Kr284CLb8Vv6pZl2V4tqKadUH6UK15k87qxBxNOfKJE_HFj-R6_KRra2Lt4dEA7qYPSGIM3ZUqtq_x9HT4qISWU7hxIoaJuTwEhz34obcVMiqWbEznQiV3Zu3IaWafzQTBwwXq6_8lSu5RBbYRWWnpx_OO-1IK-szZmV-jOFTYbXgHdXWBtk19dW3Padsj2jB1Y2an8PEHBqnUAPdt4iZKzLQ06iHGz1MW08080LVr326zmsHMX-ApT9viLwVhfVKFNwHAxTuvU"/>
+</div>
+                                                    WooCommerce
+                                                </div>
+</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2.5 py-1 rounded text-xs font-bold bg-green-50 text-green-700 border border-green-200 dark:bg-green-900/30 dark:text-green-300 dark:border-green-800 uppercase tracking-wide shadow-sm">
+                                                    Delivered
+                                                </span>
+</td>
+<td class="p-4 text-right font-mono font-bold text-slate-900 dark:text-white">$2,500.00</td>
+<td class="p-4 text-right">
+<button class="inline-flex items-center justify-center w-8 h-8 rounded border border-slate-200 dark:border-slate-700 text-slate-400 hover:text-primary hover:border-primary transition-all bg-white dark:bg-surface-dark shadow-[2px_2px_0px_0px_rgba(0,0,0,0.05)] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,0.05)] hover:translate-y-[1px] hover:translate-x-[1px]">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors group">
+<td class="p-4">
+<span class="font-mono font-bold text-slate-900 dark:text-white bg-slate-100 dark:bg-white/10 px-2 py-1 rounded">#ORD-9921</span>
+</td>
+<td class="p-4 text-slate-500 text-sm font-mono">Oct 23, 2023</td>
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-gradient-to-br from-orange-100 to-amber-100 dark:from-orange-900 dark:to-amber-900 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-xs font-bold text-slate-700 dark:text-slate-300 shadow-sm">ER</div>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-slate-900 dark:text-white">Ellen Ripley</span>
+<span class="text-xs text-slate-500 font-mono">ripley@nostromo.ship</span>
+</div>
+</div>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-2 text-sm font-medium text-slate-700 dark:text-slate-300">
+<div class="w-6 h-6 rounded bg-white dark:bg-black border border-slate-100 dark:border-slate-700 flex items-center justify-center p-0.5 shadow-sm">
+<img alt="Messenger" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQmIiSPcoKJIn8zaiYyohwFslr8cvRKL8hTc_yIeg-lS-LZTwKUgjDmP_KI4Pwc_J7J1jvtumO43r-_d6_UuUbyDQMNfbJ0C_zET4R3sPfjbg4p-V0XK6ChbMl_7OMAiaTiT1U8xPgesdrlkujnG9hvy3xErT5oXR3ZKklKXpMtIvTVZFTPoL2FSM0JbnVyMD6VkMrvBcNECVsxuk1jrYy-CZP70D6dA4ZN-LdmgMWghOQPEzYr1A2jjmeWZ1kProJISUtnpCHhr0"/>
+</div>
+                                                    Messenger
+                                                </div>
+</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2.5 py-1 rounded text-xs font-bold bg-slate-100 text-slate-600 border border-slate-300 dark:bg-slate-800 dark:text-slate-400 dark:border-slate-600 uppercase tracking-wide shadow-sm">
+                                                    Cancelled
+                                                </span>
+</td>
+<td class="p-4 text-right font-mono font-bold text-slate-900 dark:text-white">$12.99</td>
+<td class="p-4 text-right">
+<button class="inline-flex items-center justify-center w-8 h-8 rounded border border-slate-200 dark:border-slate-700 text-slate-400 hover:text-primary hover:border-primary transition-all bg-white dark:bg-surface-dark shadow-[2px_2px_0px_0px_rgba(0,0,0,0.05)] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,0.05)] hover:translate-y-[1px] hover:translate-x-[1px]">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors group">
+<td class="p-4">
+<span class="font-mono font-bold text-slate-900 dark:text-white bg-slate-100 dark:bg-white/10 px-2 py-1 rounded">#ORD-9920</span>
+</td>
+<td class="p-4 text-slate-500 text-sm font-mono">Oct 22, 2023</td>
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-gradient-to-br from-cyan-100 to-sky-100 dark:from-cyan-900 dark:to-sky-900 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-xs font-bold text-slate-700 dark:text-slate-300 shadow-sm">MM</div>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-slate-900 dark:text-white">Marty McFly</span>
+<span class="text-xs text-slate-500 font-mono">marty@future.com</span>
+</div>
+</div>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-2 text-sm font-medium text-slate-700 dark:text-slate-300">
+<div class="w-6 h-6 rounded bg-white dark:bg-black border border-slate-100 dark:border-slate-700 flex items-center justify-center p-0.5 shadow-sm">
+<img alt="Shopee" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDEI6XkTKiuNYI_8pBWeLUesu3oC9ZkLjWuDAttC38dmo1c3Yr_JL0VtQ0_fll2jyfPlZzeK7hORSLJkrzrr1H7X47qRyldoUgcRxArkXrw_4kroLtMukDDdkQQXAlxLq-zacQd3k5T08PMuzblVlBI2n_kWsyEp_YQXscG9stFCBBwCxxiawk8rfDv4NdH775s4BTaCoBl8hFi9PtfTakl7Edzb1NpLaizfDZaTEqkYUsPfJUdWy774U0hHgwp1A2fZ-6kphqlCg"/>
+</div>
+                                                    Shopee
+                                                </div>
+</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2.5 py-1 rounded text-xs font-bold bg-green-50 text-green-700 border border-green-200 dark:bg-green-900/30 dark:text-green-300 dark:border-green-800 uppercase tracking-wide shadow-sm">
+                                                    Delivered
+                                                </span>
+</td>
+<td class="p-4 text-right font-mono font-bold text-slate-900 dark:text-white">$88.00</td>
+<td class="p-4 text-right">
+<button class="inline-flex items-center justify-center w-8 h-8 rounded border border-slate-200 dark:border-slate-700 text-slate-400 hover:text-primary hover:border-primary transition-all bg-white dark:bg-surface-dark shadow-[2px_2px_0px_0px_rgba(0,0,0,0.05)] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,0.05)] hover:translate-y-[1px] hover:translate-x-[1px]">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="bg-slate-50 dark:bg-slate-800/30 p-4 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between">
+<span class="text-sm text-slate-500 dark:text-slate-400 font-mono">Showing 1-10 of 48 orders</span>
+<div class="flex gap-2">
+<button class="h-8 px-3 rounded border border-slate-200 dark:border-slate-700 bg-white dark:bg-surface-dark text-sm font-bold hover:border-primary hover:text-primary dark:hover:text-primary transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-[2px_2px_0px_0px_rgba(0,0,0,0.05)] active:shadow-none active:translate-y-[2px] active:translate-x-[2px]" disabled="">Prev</button>
+<button class="h-8 px-3 rounded border border-slate-200 dark:border-slate-700 bg-white dark:bg-surface-dark text-sm font-bold hover:border-primary hover:text-primary dark:hover:text-primary transition-colors shadow-[2px_2px_0px_0px_rgba(0,0,0,0.05)] active:shadow-none active:translate-y-[2px] active:translate-x-[2px]">Next</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>
