@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Settings - OmniSupport AI</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#89CFF0", // Retro Pastel Blue (Baby Blue)
+                        "primary-hover": "#7ABBE0", // Slightly darker shade for hover states
+                        "primary-text": "#0F172A", // Dark text for better contrast on light pastel
+                        "background-light": "#f8fafc", // Very subtle off-white for a cleaner, lighter feel
+                        "background-dark": "#0f0f11",
+                        "surface-dark": "#18181b",
+                        "grid-line": "rgba(0,0,0,0.06)",
+                        "grid-line-dark": "rgba(255,255,255,0.06)",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "mono": ["Space Mono", "monospace"],
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .bg-grid-pattern {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+                              linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+        }
+        .dark .bg-grid-pattern {
+            background-image: linear-gradient(to right, var(--grid-line-dark) 1px, transparent 1px),
+                              linear-gradient(to bottom, var(--grid-line-dark) 1px, transparent 1px);
+        }
+    </style>
+<style type="text/tailwindcss">
+        :root {
+            --grid-line: rgba(0,0,0,0.06);
+            --grid-line-dark: rgba(255,255,255,0.06);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white transition-colors duration-200 bg-grid-pattern">
+<div class="flex min-h-screen w-full flex-col overflow-x-hidden backdrop-blur-[1px]">
+<header class="flex items-center justify-between border-b border-solid border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md px-10 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-slate-900 dark:text-white">
+<div class="size-8 text-primary">
+<div class="w-8 h-8 bg-primary rounded-sm flex items-center justify-center text-primary-text font-bold text-xl shadow-[2px_2px_0px_0px_rgba(0,0,0,0.1)] border border-slate-900/10">
+                            O
+                        </div>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] font-mono">OmniSupport.</h2>
+</div>
+<label class="flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full ring-1 ring-slate-200 dark:ring-slate-700 focus-within:ring-primary dark:focus-within:ring-primary transition-all bg-white dark:bg-surface-dark">
+<div class="text-slate-500 dark:text-[#9da8b9] flex border-none bg-transparent items-center justify-center pl-4 rounded-l-lg border-r-0">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-slate-900 dark:text-white focus:outline-0 focus:ring-0 border-none bg-transparent focus:border-none h-full placeholder:text-slate-400 dark:placeholder:text-[#64748b] px-4 rounded-l-none border-l-0 pl-2 text-sm font-normal leading-normal" placeholder="Search..." value=""/>
+</div>
+</label>
+</div>
+<div class="flex flex-1 justify-end gap-8">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border border-slate-200 dark:border-slate-700" data-alt="User profile picture showing a friendly professional" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAsXj0w8DvRsMvZPRkfBtEKkzijHEVDy6UYMG54bw2TeT5bYHpqvekwjb0xs9ZevWAwsNnDxiOKvqogc-_I0bkgtIu_bbyxFR5YLLA5VpLOAnV62bRwEUAuVsk7rLx4Xcsmb-XyRR_rGE1Xz1HRfybpDDFgas98OZLEi3jGRiwKZVJsKGHt_7gWgjZtg5fMCXIC7WkJUWPuHhzSwj3yWsbcSdW0fmaUpBwfd_heK4FJC16uoWHMe5LVDv8UZaYx0zsnksZl92Dp6mk");'></div>
+</div>
+</header>
+<div class="layout-container flex h-full grow flex-col md:flex-row">
+<div class="hidden md:flex w-72 flex-col border-r border-solid border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-background-dark/50 p-4 shrink-0 backdrop-blur-sm">
+<div class="flex flex-col gap-4">
+<div class="flex gap-3 mb-6 p-2">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-md size-12 shadow-[2px_2px_0px_0px_rgba(0,0,0,0.05)] border border-slate-200 dark:border-slate-700" data-alt="Company logo for admin console" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDkoZC-Ssa0NdWkXkOiO-Ve2I_PtBzFRKSPiM96q6ZhbvlowJILClVTxUhzxoLXIzO-VFj2W7ZqPUivsxHQmshi2Na_S0Nhc6aEK36DqcZhQmaYphBCxNRdWmnWkznvNy76S24Wi8ACJaPE07pje2vrzOsX1rNT9GQqHPc3DoR4arpCcgOYyAKK8Hjhwncihk1z-N4KVoWBCPTsxulJdaXKz2ANvklsHYlJEdGrAdLMdpYH_VvgOWdbzmSPq76fiDd01w5bi-7YdnY");'></div>
+<div class="flex flex-col justify-center">
+<h1 class="text-slate-900 dark:text-white text-base font-bold leading-normal">Admin Console</h1>
+<p class="text-slate-500 dark:text-[#9da8b9] text-xs font-normal leading-normal font-mono">admin@omnisupport.com</p>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-3 px-3 py-2.5 rounded hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer transition-colors text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<p class="text-sm font-medium leading-normal">Dashboard</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2.5 rounded hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer transition-colors text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white">
+<span class="material-symbols-outlined text-[20px]">chat_bubble</span>
+<p class="text-sm font-medium leading-normal">Inbox</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2.5 rounded hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer transition-colors text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white">
+<span class="material-symbols-outlined text-[20px]">shopping_bag</span>
+<p class="text-sm font-medium leading-normal">Orders</p>
+</div>
+<div class="my-2 border-b border-slate-200 dark:border-slate-800"></div>
+<div class="flex items-center gap-3 px-3 py-2.5 rounded hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer transition-colors text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white">
+<span class="material-symbols-outlined text-[20px]">extension</span>
+<p class="text-sm font-medium leading-normal">Integrations</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2.5 rounded bg-slate-50 dark:bg-white/5 text-slate-900 dark:text-white border-l-4 border-primary">
+<span class="material-symbols-outlined text-[20px] fill-current">settings</span>
+<p class="text-sm font-bold leading-normal">Settings</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2.5 rounded hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer transition-colors text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white">
+<span class="material-symbols-outlined text-[20px]">group</span>
+<p class="text-sm font-medium leading-normal">Team</p>
+</div>
+</div>
+</div>
+<div class="mt-auto pt-6">
+<div class="bg-slate-50 dark:bg-slate-800/30 rounded p-4 border border-slate-200 dark:border-slate-800 shadow-[2px_2px_0px_0px_rgba(0,0,0,0.05)]">
+<p class="text-slate-900 dark:text-white text-sm font-semibold mb-1">Need help?</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs mb-3">Visit our support center.</p>
+<button class="text-slate-900 dark:text-white border-b-2 border-primary/50 text-xs font-bold hover:text-primary hover:border-primary transition-colors">Help Center</button>
+</div>
+</div>
+</div>
+<div class="flex flex-1 justify-center py-5 overflow-y-auto">
+<div class="layout-content-container flex flex-col max-w-[1000px] flex-1 px-4 md:px-8">
+<div class="flex flex-col md:flex-row md:items-start justify-between gap-4 p-4 mb-6">
+<div class="flex flex-col gap-2">
+<h1 class="text-slate-900 dark:text-white text-4xl md:text-5xl font-black leading-tight tracking-[-0.033em] font-mono">Settings.</h1>
+<p class="text-slate-500 dark:text-[#9da8b9] text-base font-normal leading-normal max-w-2xl mt-2">Manage your account, preferences, and workspace settings from one centralized place.</p>
+</div>
+<button class="flex shrink-0 cursor-pointer items-center justify-center overflow-hidden rounded bg-primary text-primary-text hover:bg-primary-hover font-bold leading-normal tracking-[0.015em] border border-primary transition-colors shadow-[2px_2px_0px_0px_rgba(0,0,0,0.1)] h-10 px-6 group transition-transform hover:-translate-y-0.5 active:translate-y-0">
+<span class="material-symbols-outlined text-[20px] mr-2">save</span>
+<span class="truncate">Save Changes</span>
+</button>
+</div>
+<div class="px-4 mb-6">
+<div class="border-b border-slate-200 dark:border-slate-800 flex gap-6 overflow-x-auto scrollbar-hide">
+<button class="pb-3 border-b-2 border-primary text-slate-900 dark:text-white font-bold text-sm">General</button>
+<button class="pb-3 border-b-2 border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 font-medium text-sm transition-colors">Notifications</button>
+<button class="pb-3 border-b-2 border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 font-medium text-sm transition-colors">Billing</button>
+<button class="pb-3 border-b-2 border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 font-medium text-sm transition-colors">Team Members</button>
+</div>
+</div>
+<div class="px-4 space-y-8">
+<div class="bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-800 rounded p-6 shadow-sm">
+<div class="flex justify-between items-start mb-6">
+<div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white font-mono">Profile Information</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400">Update your photo and personal details.</p>
+</div>
+<span class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2 py-1 rounded text-xs font-mono font-medium border border-slate-200 dark:border-slate-700">Administrator</span>
+</div>
+<div class="flex flex-col md:flex-row gap-8">
+<div class="flex flex-col items-center gap-3">
+<div class="size-24 rounded-full border-2 border-slate-200 dark:border-slate-700 p-1">
+<div class="w-full h-full rounded-full bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAsXj0w8DvRsMvZPRkfBtEKkzijHEVDy6UYMG54bw2TeT5bYHpqvekwjb0xs9ZevWAwsNnDxiOKvqogc-_I0bkgtIu_bbyxFR5YLLA5VpLOAnV62bRwEUAuVsk7rLx4Xcsmb-XyRR_rGE1Xz1HRfybpDDFgas98OZLEi3jGRiwKZVJsKGHt_7gWgjZtg5fMCXIC7WkJUWPuHhzSwj3yWsbcSdW0fmaUpBwfd_heK4FJC16uoWHMe5LVDv8UZaYx0zsnksZl92Dp6mk");'></div>
+</div>
+<button class="text-sm font-bold text-primary hover:text-primary-hover transition-colors">Change Photo</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+<div class="flex flex-col gap-1.5">
+<label class="text-sm font-semibold text-slate-900 dark:text-white">Full Name</label>
+<input class="w-full rounded h-10 px-3 bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-700 focus:border-primary focus:ring-1 focus:ring-primary transition-colors text-slate-900 dark:text-white text-sm" placeholder="Your name" type="text" value="Sarah Jenkins"/>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="text-sm font-semibold text-slate-900 dark:text-white">Email Address</label>
+<input class="w-full rounded h-10 px-3 bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-700 focus:border-primary focus:ring-1 focus:ring-primary transition-colors text-slate-900 dark:text-white text-sm" placeholder="email@example.com" type="email" value="admin@omnisupport.com"/>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="text-sm font-semibold text-slate-900 dark:text-white">Role</label>
+<input class="w-full rounded h-10 px-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-500 dark:text-slate-400 text-sm cursor-not-allowed" disabled="" readonly="" type="text" value="System Administrator"/>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="text-sm font-semibold text-slate-900 dark:text-white">Phone Number</label>
+<input class="w-full rounded h-10 px-3 bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-700 focus:border-primary focus:ring-1 focus:ring-primary transition-colors text-slate-900 dark:text-white text-sm" placeholder="+1 (555) 000-0000" type="tel"/>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-800 rounded p-6 shadow-sm">
+<div class="mb-6">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white font-mono">Workspace Preferences</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400">Customize your workspace experience.</p>
+</div>
+<div class="space-y-6">
+<div class="flex items-center justify-between pb-4 border-b border-slate-100 dark:border-slate-800">
+<div>
+<p class="font-semibold text-slate-900 dark:text-white">Time Zone</p>
+<p class="text-sm text-slate-500 dark:text-slate-400">Set your local time zone for reports and logs.</p>
+</div>
+<select class="rounded h-10 pl-3 pr-8 bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-700 focus:border-primary focus:ring-1 focus:ring-primary text-sm text-slate-900 dark:text-white min-w-[200px]">
+<option>Pacific Time (US &amp; Canada)</option>
+<option>Eastern Time (US &amp; Canada)</option>
+<option>UTC</option>
+<option>London (GMT)</option>
+</select>
+</div>
+<div class="flex items-center justify-between pb-4 border-b border-slate-100 dark:border-slate-800">
+<div>
+<p class="font-semibold text-slate-900 dark:text-white">Language</p>
+<p class="text-sm text-slate-500 dark:text-slate-400">Choose your preferred interface language.</p>
+</div>
+<select class="rounded h-10 pl-3 pr-8 bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-700 focus:border-primary focus:ring-1 focus:ring-primary text-sm text-slate-900 dark:text-white min-w-[200px]">
+<option>English (United States)</option>
+<option>Spanish</option>
+<option>French</option>
+<option>German</option>
+</select>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<p class="font-semibold text-slate-900 dark:text-white">Dark Mode</p>
+<p class="text-sm text-slate-500 dark:text-slate-400">Toggle between light and dark themes.</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-800 rounded p-6 shadow-sm">
+<div class="mb-6">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white font-mono">Notifications</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400">Choose how and when you want to be notified.</p>
+</div>
+<div class="space-y-4">
+<div class="flex items-center justify-between p-3 rounded hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">mail</span>
+</div>
+<div>
+<p class="font-semibold text-slate-900 dark:text-white text-sm">Email Digest</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Receive a weekly summary of your analytics.</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-9 h-5 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="flex items-center justify-between p-3 rounded hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">notifications</span>
+</div>
+<div>
+<p class="font-semibold text-slate-900 dark:text-white text-sm">New Orders</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Get notified immediately when a new order comes in.</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-9 h-5 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="flex items-center justify-between p-3 rounded hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+</div>
+<div>
+<p class="font-semibold text-slate-900 dark:text-white text-sm">Support Messages</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Notifications for new customer inquiries.</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox" value=""/>
+<div class="w-9 h-5 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</div>
+<div class="mt-8 mb-12 border border-red-200 dark:border-red-900/30 bg-red-50 dark:bg-red-900/10 rounded p-6">
+<h3 class="text-lg font-bold text-red-700 dark:text-red-400 font-mono mb-2">Danger Zone</h3>
+<p class="text-sm text-red-600 dark:text-red-300 mb-4">Irreversible actions regarding your account data.</p>
+<div class="flex flex-col md:flex-row gap-4 justify-between items-center">
+<p class="text-sm font-medium text-slate-700 dark:text-slate-300">Delete this workspace and all associated data</p>
+<button class="bg-white dark:bg-surface-dark border border-red-300 dark:border-red-800 text-red-600 dark:text-red-400 px-4 py-2 rounded text-sm font-bold hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors shadow-sm">Delete Workspace</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>

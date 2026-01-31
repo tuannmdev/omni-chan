@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Unified Dashboard - Retro Pastel Blue</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#A5D8FF", // Retro Pastel Blue
+                        "primary-hover": "#80C4FF", // Slightly deeper blue for hover
+                        "background-main": "#ffffff",
+                        "background-sub": "#f8fafc",
+                        "surface": "#ffffff",
+                        "surface-alt": "#f1f5f9",
+                        "border-light": "#cbd5e1", // Cooler grey for retro feel
+                        "border-medium": "#94a3b8",
+                    },
+                    fontFamily: {
+                        "display": ["Space Mono", "monospace"],
+                        "body": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "2xl": "0px",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 0px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        .bg-grid {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(165, 216, 255, 0.2) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(165, 216, 255, 0.2) 1px, transparent 1px);
+        }
+        .neon-border:focus-within {
+            box-shadow: 0 0 10px rgba(165, 216, 255, 0.7);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 font-body h-screen flex overflow-hidden antialiased bg-grid selection:bg-primary selection:text-black">
+<aside class="w-16 md:w-20 bg-white flex flex-col items-center py-6 border-r border-border-light z-20 shrink-0">
+<div class="mb-8">
+<div class="size-10 bg-primary text-black font-display font-bold text-xl flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,0.15)] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,0.15)] transition-all cursor-pointer border border-transparent">
+                AI
+            </div>
+</div>
+<nav class="flex-1 flex flex-col gap-6 w-full items-center">
+<button class="p-3 text-gray-400 hover:text-black transition-colors group relative">
+<span class="material-symbols-outlined text-[24px]">grid_view</span>
+<span class="absolute left-14 bg-black text-white text-xs px-2 py-1 font-mono opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-50 shadow-lg">Dashboard</span>
+</button>
+<button class="p-3 text-black bg-primary/20 transition-colors relative border-l-2 border-primary w-full flex justify-center">
+<span class="material-symbols-outlined text-[24px] fill-1">chat</span>
+</button>
+<button class="p-3 text-gray-400 hover:text-black transition-colors group relative">
+<span class="material-symbols-outlined text-[24px]">bar_chart</span>
+<span class="absolute left-14 bg-black text-white text-xs px-2 py-1 font-mono opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-50 shadow-lg">Analytics</span>
+</button>
+<button class="p-3 text-gray-400 hover:text-black transition-colors group relative">
+<span class="material-symbols-outlined text-[24px]">inventory_2</span>
+<span class="absolute left-14 bg-black text-white text-xs px-2 py-1 font-mono opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-50 shadow-lg">Orders</span>
+</button>
+</nav>
+<div class="flex flex-col gap-4 w-full items-center mb-2">
+<button class="p-3 text-gray-400 hover:text-black transition-colors group relative">
+<span class="material-symbols-outlined text-[24px]">settings</span>
+</button>
+<div class="size-9 bg-cover bg-center border border-gray-200 cursor-pointer grayscale hover:grayscale-0 transition-all hover:border-primary" data-alt="User profile avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA2TrqmHdwV_xD0CPCYRV7munH0h98Fh-5pPUjXGEXBKacekErk4cjhDMtgfBfDE0s3t0MowZn4LA8W76g1GF7enukM_CjiyoqRSrAa7mZXqDPqSVqAiiGCREHm2lWEuHB6VK2QG777QFyzuf9FVaZXeGMGcvLBmUO9ZXUxv284dfObcSOkUozT0iMIlyQFb0kJwfxpDnZLFtNkELiYy5qnk91WoEogk2-7G5M9TDW2zJ9QUoCPwqDsQ2-3DpRwAoTmXR1ZUHSg_lM");'></div>
+</div>
+</aside>
+<section class="w-[360px] bg-white/80 backdrop-blur-lg border-r border-border-light flex flex-col shrink-0">
+<div class="p-5 pb-2">
+<div class="flex justify-between items-center mb-6">
+<h2 class="text-2xl font-display font-bold text-gray-900 tracking-tighter">Inbox</h2>
+<div class="flex gap-2">
+<button class="text-gray-400 hover:text-black transition-colors">
+<span class="material-symbols-outlined">filter_list</span>
+</button>
+<button class="text-gray-400 hover:text-black transition-colors">
+<span class="material-symbols-outlined">edit_square</span>
+</button>
+</div>
+</div>
+<div class="relative group mb-2">
+<input class="w-full bg-slate-50 border border-border-light text-gray-900 text-sm pl-10 pr-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all placeholder:text-gray-400 font-mono" placeholder="Search conversations..."/>
+<span class="material-symbols-outlined absolute left-3 top-3 text-gray-400 group-focus-within:text-black transition-colors text-[20px]">search</span>
+</div>
+</div>
+<div class="px-5 py-2 overflow-x-auto scrollbar-hide flex gap-2 mb-2">
+<button class="whitespace-nowrap px-3 py-1 bg-primary text-black border border-primary text-xs font-mono font-bold hover:bg-primary-hover transition-colors shadow-[2px_2px_0px_0px_rgba(0,0,0,0.1)]">All</button>
+<button class="whitespace-nowrap px-3 py-1 bg-transparent text-gray-500 border border-border-light text-xs font-mono hover:text-black hover:border-gray-400 transition-colors">Unread</button>
+<button class="whitespace-nowrap px-3 py-1 bg-transparent text-gray-500 border border-border-light text-xs font-mono hover:text-black hover:border-gray-400 transition-colors">Priority</button>
+<button class="whitespace-nowrap px-3 py-1 bg-transparent text-gray-500 border border-border-light text-xs font-mono hover:text-black hover:border-gray-400 transition-colors">Resolved</button>
+</div>
+<div class="flex-1 overflow-y-auto custom-scrollbar px-3 pb-3 space-y-1">
+<div class="flex flex-col gap-2 p-4 bg-white border-l-2 border-primary cursor-pointer relative group transition-all shadow-sm">
+<div class="flex items-start gap-3">
+<div class="relative shrink-0">
+<div class="w-10 h-10 bg-cover bg-center" data-alt="Portrait of Nguyen Van A" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB1vr_4XeCAEob8s3Jn40_K5EKTZV7MVCBhYm-eHEx6S5D2RSzboJIsq1aFjz60ShuOfq5isanU6Moidr9CDspNe2NBOrrL1EqL7m6t_mlubghefEi5QNh_eaDSfnXAJtC5HuFoOMpG3lGgfK-wCZgi7aHcNK1ry0iO8xJ6GpJl6yNxrTeWNYFa5BNsDLnAEFaswYZZCiw2_qs1Yz4vcf3BEYrTyd8zs_6ST3wJIZON55_WDwOb8QU5p523ncEO0aF95_TUld9yEUI");'></div>
+<span class="absolute -bottom-1 -right-1 flex items-center justify-center bg-[#ee4d2d] w-4 h-4" title="Shopee">
+<span class="material-symbols-outlined text-white text-[10px] font-bold">shopping_bag</span>
+</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-1">
+<h3 class="text-gray-900 text-sm font-bold font-display truncate">Nguyen Van A</h3>
+<span class="text-xs text-gray-500 font-mono">2m</span>
+</div>
+<p class="text-gray-600 text-sm line-clamp-1">Is this item still available in size L?</p>
+<div class="flex items-center gap-2 mt-2">
+<span class="px-1.5 py-0.5 bg-[#ee4d2d]/10 text-[#ee4d2d] text-[10px] font-mono border border-[#ee4d2d]/20">Shopee</span>
+<span class="px-1.5 py-0.5 bg-blue-500/10 text-blue-600 text-[10px] font-mono border border-blue-500/20">Inquiry</span>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-2 p-4 border border-transparent hover:bg-slate-50 hover:border-gray-200 cursor-pointer transition-colors">
+<div class="flex items-start gap-3">
+<div class="relative shrink-0">
+<div class="w-10 h-10 bg-cover bg-center grayscale group-hover:grayscale-0 transition-all" data-alt="Portrait of Tran Thi B" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAms8UNJ6FOckNij0bmtqkdcQ56TD0OTmMRYHF-hokPuRq9rJ-NmZ3C-yxeHnmqBO9bI3XrLjTGaHc4ZsMvreUjcg-7Nb1D0fEdvfzI9PwmPFKXPNSwDzelKtt9Zxyq3HabtMpG3phWkjfLKt7wUKmgJug8giHq-qbStdkn3b6zsU8pSXpUcR-Oa2WC_iyG_nXBcjF5W19Ut0DEGP8RfM-gVGfuSVbRQI0Dx26W1yYNQVL4JSVOw59H6nLeOHKjQFbLA3wB8jMwujI");'></div>
+<span class="absolute -bottom-1 -right-1 flex items-center justify-center bg-[#1877f2] w-4 h-4" title="Facebook">
+<span class="material-symbols-outlined text-white text-[10px]">public</span>
+</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-1">
+<h3 class="text-gray-700 text-sm font-bold font-display truncate">Tran Thi B</h3>
+<span class="text-xs text-gray-400 font-mono">15m</span>
+</div>
+<p class="text-gray-500 text-sm line-clamp-1">Please send me the size chart.</p>
+<div class="flex items-center gap-2 mt-2">
+<span class="px-1.5 py-0.5 bg-[#1877f2]/10 text-[#1877f2] text-[10px] font-mono border border-[#1877f2]/20">Facebook</span>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-2 p-4 border border-transparent hover:bg-slate-50 hover:border-gray-200 cursor-pointer transition-colors">
+<div class="flex items-start gap-3">
+<div class="relative shrink-0">
+<div class="w-10 h-10 bg-cover bg-center grayscale group-hover:grayscale-0 transition-all" data-alt="Portrait of Le Van C" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDQKFJkmMHqRchrmrfZfVJ5Jw4AkIRJS_MqSuAp_9Djh7g5qyCdKMgP__RIzCz5V27M636dqjk-0lDc7n2CE7VX05_X3htX6b8F8390Okrvjc4qMAVYwHQWTkUqjL0Obrq_zt-xMPyGZde06yZwQsgNO-F04rEMvm_5SpFTXW1tWqjVVovo_mjWazUctwzNdzDeJKJLUn5M0qQcIcf1AVnu9KJqxLMYE7FKfJJ1CyKYXL7d7U-f1LlS6g6WKEhI2R1hBAq7WYphyV4");'></div>
+<span class="absolute -bottom-1 -right-1 flex items-center justify-center bg-black text-white w-4 h-4 border border-gray-700" title="TikTok">
+<span class="material-symbols-outlined text-[10px]">music_note</span>
+</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-1">
+<h3 class="text-gray-700 text-sm font-bold font-display truncate">Le Van C</h3>
+<span class="text-xs text-gray-400 font-mono">1h</span>
+</div>
+<p class="text-gray-500 text-sm line-clamp-1">My order hasn't arrived yet.</p>
+<div class="flex items-center gap-2 mt-2">
+<span class="px-1.5 py-0.5 bg-pink-500/10 text-pink-600 text-[10px] font-mono border border-pink-500/20">TikTok Shop</span>
+<span class="px-1.5 py-0.5 bg-red-500/10 text-red-600 text-[10px] font-mono border border-red-500/20">Complaint</span>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-2 p-4 border border-transparent hover:bg-slate-50 hover:border-gray-200 cursor-pointer transition-colors opacity-70">
+<div class="flex items-start gap-3">
+<div class="relative shrink-0">
+<div class="w-10 h-10 bg-cover bg-center grayscale group-hover:grayscale-0 transition-all" data-alt="Portrait of Pham Thi D" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB-UCIu26NlK1Yy-1h_1bldAFBhOBhMC6zPcHkn-yGvM8wLs2KV6E87VtZkAfEyNNmqg-Y5pmW2KqL-rUogIE4SjSpTwYjcJUdMNNfmhMiPflmGGMmdwlYPrTPqDvLLDY5eE5-6llxdpuF4LEqoaRv8As55PKc_ONs30EjnjhtcLh9u4Z9ZDWh4GpMQdXrEVaXJKKykdrO1nxwAsMIWrdYfEVfWynvqhWBXZyfjsMptFpUeSutUWfhiEX0F8JsiQebzG9QTyvGLPZ8");'></div>
+<span class="absolute -bottom-1 -right-1 flex items-center justify-center bg-[#0f146d] w-4 h-4" title="Lazada">
+<span class="material-symbols-outlined text-white text-[10px]">store</span>
+</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-1">
+<h3 class="text-gray-700 text-sm font-bold font-display truncate">Pham Thi D</h3>
+<span class="text-xs text-gray-400 font-mono">2h</span>
+</div>
+<p class="text-gray-500 text-sm line-clamp-1">Thank you! Will order now.</p>
+<div class="flex items-center gap-2 mt-2">
+<span class="px-1.5 py-0.5 bg-indigo-500/10 text-indigo-600 text-[10px] font-mono border border-indigo-500/20">Lazada</span>
+<span class="px-1.5 py-0.5 bg-primary/20 text-black text-[10px] font-mono border border-primary/20">Resolved</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<main class="flex-1 flex flex-col relative min-w-0 bg-slate-50/50">
+<header class="h-20 border-b border-border-light flex items-center justify-between px-8 shrink-0 z-10 bg-white/95 backdrop-blur-md">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-cover bg-center border border-gray-200" data-alt="Portrait of Nguyen Van A" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuASuKF8RYAjJjylT7AGizRlNzIO4NAtMdayzZeO_IPLBZPraz10Hfi4rjhs6j3Jje9w2CIqbyEONwGZJ0GLZ8Fnm90IdI4amCKzlm5DXN0gytAl8OtVU6yHs7z3JfGbCBgo3bAEVXN2LJer56wiRckJLeODiL5WtD3RoIn-aoeqxysyaZ0CRmmqbNazf9hK8n3_e6yecKoUwfbKwSVwrak3UDFwWG9HHWoqTUtsqJlWDCsOXz84f1zi3xhDIE57U58s9iYnUQMgVNs");'></div>
+<div>
+<div class="flex items-center gap-2">
+<h1 class="text-gray-900 font-display font-bold text-lg tracking-tight">Nguyen Van A</h1>
+<div class="size-2 bg-primary animate-pulse rounded-full"></div>
+</div>
+<p class="text-gray-500 text-xs font-mono flex items-center gap-2 mt-0.5">
+                        VIA SHOPEE <span class="text-gray-300">|</span> ONLINE
+                    </p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 text-gray-400 hover:text-black rounded-none transition-colors" title="Search in chat">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</button>
+<button class="p-2 text-gray-400 hover:text-black rounded-none transition-colors" title="Pin conversation">
+<span class="material-symbols-outlined text-[20px]">push_pin</span>
+</button>
+<button class="p-2 text-gray-400 hover:text-black rounded-none transition-colors" title="More options">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</header>
+<div class="flex-1 overflow-y-auto custom-scrollbar p-8 space-y-8 flex flex-col">
+<div class="flex justify-center">
+<span class="text-xs font-mono text-gray-500 border border-gray-200 bg-white px-3 py-1">TODAY, 10:23 AM</span>
+</div>
+<div class="flex gap-4 max-w-[80%] self-start group items-end">
+<div class="w-8 h-8 bg-cover bg-center shrink-0 mb-1" data-alt="User avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBDH_vdGaolDqR72LHVNm5eL_Bq_wPZaAMJXwt6IvJsG5yeiN4rz2fyXnTA9bU-5JavyUbV7zYh5nxu3KSHO5CdsMu16ddn2Xepu1Kbbr6syhRoQGIk9VrB9Jv99CLiICiCoZjo56nsGHtGRUJ1q3pZheNMKvd46AsWT0rUUw0sFCMNBycwbbNGEJnc1Zw1GTkgRkm7md43fCJ84p8W4QVOxHFrQ6ep47lk08nFizN5kWBhPhLeim4KdsWRxOQK-xBBg89W9kBqFTM");'></div>
+<div class="flex flex-col gap-1">
+<div class="bg-white border border-gray-200 text-gray-800 px-5 py-3 shadow-sm">
+<p class="text-sm leading-relaxed">Hi, I'm interested in the "Vintage Denim Jacket".</p>
+</div>
+<span class="text-[10px] font-mono text-gray-400 ml-1 opacity-0 group-hover:opacity-100 transition-opacity">10:23 AM</span>
+</div>
+</div>
+<div class="flex gap-4 max-w-[80%] self-start group items-end">
+<div class="w-8 h-8 opacity-0 shrink-0"></div>
+<div class="flex flex-col gap-1">
+<div class="bg-white border border-gray-200 text-gray-800 px-5 py-3 shadow-sm">
+<p class="text-sm leading-relaxed">Is this item still available in size L? I need it by next week.</p>
+</div>
+<span class="text-[10px] font-mono text-gray-400 ml-1 opacity-0 group-hover:opacity-100 transition-opacity">10:24 AM</span>
+</div>
+</div>
+<div class="flex gap-4 max-w-[80%] self-end flex-row-reverse group items-end">
+<div class="w-8 h-8 bg-black text-white flex items-center justify-center shrink-0 mb-1 text-xs font-bold border border-black font-mono">ME</div>
+<div class="flex flex-col gap-1 items-end">
+<div class="bg-primary text-black px-5 py-3 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.08)]">
+<p class="text-sm leading-relaxed font-medium">Hello Nguyen! Yes, we have 3 left in stock for size L. It usually takes 2-3 days for shipping within the city.</p>
+</div>
+<span class="text-[10px] font-mono text-gray-400 mr-1 opacity-0 group-hover:opacity-100 transition-opacity">10:25 AM · Read</span>
+</div>
+</div>
+<div class="flex flex-col items-center gap-2 my-4">
+<div class="flex flex-col md:flex-row items-start md:items-center gap-3 px-4 py-3 bg-white border border-dashed border-gray-300 w-fit max-w-2xl hover:border-primary transition-colors group/ai shadow-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm animate-pulse">auto_awesome</span>
+<p class="text-sm text-gray-500 font-mono">
+<span class="text-black font-bold">AI Draft:</span> Would you like to place an order now?
+                        </p>
+</div>
+<button class="text-xs bg-primary hover:bg-primary-hover text-black font-bold px-3 py-1 font-mono uppercase tracking-wide transition-colors ml-auto md:ml-2 shadow-lg shadow-primary/20">Insert</button>
+</div>
+</div>
+</div>
+<div class="p-6 bg-white border-t border-border-light">
+<div class="bg-white border border-border-light flex flex-col shadow-lg neon-border transition-colors">
+<div class="flex items-center gap-1 p-2 border-b border-border-light bg-slate-50">
+<button class="p-1.5 text-gray-500 hover:text-black hover:bg-gray-200 transition-colors" title="Bold">
+<span class="material-symbols-outlined text-[18px]">format_bold</span>
+</button>
+<button class="p-1.5 text-gray-500 hover:text-black hover:bg-gray-200 transition-colors" title="Italic">
+<span class="material-symbols-outlined text-[18px]">format_italic</span>
+</button>
+<div class="w-px h-4 bg-gray-300 mx-1"></div>
+<button class="p-1.5 text-gray-500 hover:text-black hover:bg-gray-200 transition-colors" title="Image">
+<span class="material-symbols-outlined text-[18px]">image</span>
+</button>
+<button class="p-1.5 text-gray-500 hover:text-black hover:bg-gray-200 transition-colors" title="Product Link">
+<span class="material-symbols-outlined text-[18px]">shopping_cart</span>
+</button>
+<button class="p-1.5 text-gray-500 hover:text-black hover:bg-gray-200 transition-colors" title="Quick Replies">
+<span class="material-symbols-outlined text-[18px]">flash_on</span>
+</button>
+<div class="flex-1"></div>
+<button class="flex items-center gap-1.5 px-3 py-1 bg-primary/20 text-black border border-primary/40 hover:bg-primary/30 text-xs font-mono uppercase tracking-wide transition-colors">
+<span class="material-symbols-outlined text-[14px]">auto_awesome</span>
+                        AI Generate
+                    </button>
+</div>
+<div class="relative">
+<textarea class="w-full bg-transparent border-none text-gray-900 text-sm p-4 focus:ring-0 resize-none h-24 placeholder:text-gray-400 font-body" placeholder="Type your message here..."></textarea>
+<div class="absolute bottom-3 right-3 flex items-center gap-2">
+<button class="p-2 text-gray-400 hover:text-black transition-colors">
+<span class="material-symbols-outlined">sentiment_satisfied</span>
+</button>
+<button class="bg-primary hover:bg-primary-hover text-black p-2 flex items-center justify-center transition-colors shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-[20px]">send</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<aside class="w-[340px] bg-white/90 backdrop-blur-xl border-l border-border-light flex flex-col overflow-y-auto custom-scrollbar shrink-0">
+<div class="p-6 border-b border-border-light">
+<div class="flex flex-col items-center">
+<div class="w-24 h-24 bg-cover bg-center border border-gray-200 mb-4 p-1" data-alt="Large profile of Nguyen Van A">
+<div class="w-full h-full bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB7AiE8EkMLrMJWpGmSo2RcIxqtl1kqRn3AmkNhrbQKVPfWMkgyyR66IPEK4JwZz4FL1qviUND3-H5W3z43iXMskqGviN_OP2LDJONKtgNKSfJVMKpqngXrixrvvmuIyzK-aK5kpoSsnMwQsXEDfcI9VlVSGEVLgsvbGwrSHmuC34yIfPvvZFjpUqFkdGDsy7_K34VLL7eqGK57zzyb0oTQ_r2rCTdUUhfTrIjNCAqugleB_x9iz2FomDyRi_KZJ7rvQsFe6Zmrk6g");'></div>
+</div>
+<h2 class="text-xl font-display font-bold text-gray-900 mb-1">Nguyen Van A</h2>
+<div class="flex items-center gap-2 mb-6">
+<span class="px-2 py-0.5 text-[10px] font-mono font-bold bg-yellow-400 text-black uppercase tracking-wide">VIP</span>
+<span class="text-gray-500 text-xs flex items-center gap-1 font-mono">
+<span class="material-symbols-outlined text-[14px]">location_on</span> Ho Chi Minh City
+                    </span>
+</div>
+<div class="grid grid-cols-2 gap-3 w-full">
+<div class="bg-white p-4 border border-border-light flex flex-col items-center hover:border-primary transition-colors group shadow-sm">
+<span class="text-gray-500 text-[10px] font-mono uppercase mb-1">Total Spent</span>
+<span class="text-gray-900 font-bold text-lg font-display group-hover:text-primary transition-colors">45M₫</span>
+</div>
+<div class="bg-white p-4 border border-border-light flex flex-col items-center hover:border-primary transition-colors group shadow-sm">
+<span class="text-gray-500 text-[10px] font-mono uppercase mb-1">Orders</span>
+<span class="text-gray-900 font-bold text-lg font-display group-hover:text-primary transition-colors">12</span>
+</div>
+</div>
+</div>
+</div>
+<div class="p-6 border-b border-border-light">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-xs font-bold text-gray-500 uppercase tracking-widest font-mono">AI Insight</h3>
+<span class="material-symbols-outlined text-primary text-sm animate-pulse">auto_awesome</span>
+</div>
+<div class="bg-primary/10 p-4 border border-primary/30 mb-4 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-1">
+<div class="w-2 h-2 bg-primary-hover rounded-full animate-ping"></div>
+</div>
+<p class="text-sm text-gray-800 mb-3 font-mono leading-relaxed"><span class="text-black font-bold">High Intent (85%):</span> Customer is asking specifically about stock and shipping time.</p>
+<div class="h-1 w-full bg-gray-200 overflow-hidden">
+<div class="h-full bg-primary-hover w-[85%] shadow-[0_0_10px_rgba(165,216,255,0.8)]"></div>
+</div>
+</div>
+<div class="flex flex-col gap-3">
+<button class="flex items-center justify-center gap-2 w-full py-3 bg-primary hover:bg-primary-hover text-black text-sm font-bold font-mono uppercase tracking-wide transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,0.1)] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,0.1)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none border border-primary">
+<span class="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+                    Create Draft Order
+                </button>
+<button class="flex items-center justify-center gap-2 w-full py-3 bg-transparent hover:bg-slate-50 text-gray-900 border border-gray-300 hover:border-gray-400 text-sm font-bold font-mono uppercase tracking-wide transition-colors">
+<span class="material-symbols-outlined text-[18px]">local_shipping</span>
+                    Check Shipping Fee
+                </button>
+</div>
+</div>
+<div class="p-6 flex-1">
+<h3 class="text-xs font-bold text-gray-500 uppercase tracking-widest font-mono mb-4">Recent Orders</h3>
+<div class="flex flex-col gap-4">
+<div class="bg-white border border-border-light p-4 flex flex-col gap-3 hover:border-gray-400 transition-colors cursor-pointer group shadow-sm">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-gray-400 text-[20px]">package_2</span>
+<div>
+<p class="text-gray-900 text-sm font-bold font-mono group-hover:text-primary transition-colors">#ORD-9921</p>
+<p class="text-gray-500 text-[10px] font-mono uppercase">2 days ago</p>
+</div>
+</div>
+<span class="px-2 py-0.5 bg-yellow-500/10 text-yellow-600 border border-yellow-500/20 text-[10px] font-bold font-mono uppercase">Pending</span>
+</div>
+<div class="border-t border-gray-100 my-1"></div>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-slate-50 bg-cover bg-center shrink-0 border border-gray-200" data-alt="Blue Denim Jeans Product" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB6LkU624r3pXsEf2rdObjd34rFhCJaF9HgTs2aGlGyCG4F_3PUConpbcqWLmy83N5Ys4wE32kwRfrXX8Joy859fKPIYe8L0g-L8B_TcE8fOWTWO3MXktnEBYzLRGYJkdryTnIP7xS5BNX3XeePW_bNnYZgvEWuNUt8E9biMrU5hrJKFpQN0_Cb9WTmO6Tzzb7Se8SKw6pwAkZPzpXquN1hH4DeUzW5ChH94USK7gviSJi2I-PdEDvSJOwmd_CBL9JoK-Dvt1a_5QM");'></div>
+<div class="flex-1 min-w-0">
+<p class="text-gray-700 text-xs line-clamp-1">Blue Denim Jeans - Slim Fit</p>
+<p class="text-gray-900 text-sm font-bold font-mono">500.000₫</p>
+</div>
+</div>
+</div>
+<div class="bg-white border border-border-light p-4 flex flex-col gap-3 opacity-60 hover:opacity-100 hover:border-gray-400 transition-all cursor-pointer shadow-sm">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-gray-400 text-[20px]">check_circle</span>
+<div>
+<p class="text-gray-900 text-sm font-bold font-mono">#ORD-8812</p>
+<p class="text-gray-500 text-[10px] font-mono uppercase">Oct 24, 2023</p>
+</div>
+</div>
+<span class="px-2 py-0.5 bg-primary/20 text-black border border-primary/20 text-[10px] font-bold font-mono uppercase">Delivered</span>
+</div>
+<div class="border-t border-gray-100 my-1"></div>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-slate-50 bg-cover bg-center shrink-0 border border-gray-200" data-alt="White T-Shirt Product" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBw11GU2RToU17hKykBnsylFS65GsKT9n49zerErPLF-ojd5twUSyxP0omilStMW_xOQJ49L8hWqwTX0RlWYevo2-DgpuSGXD6s9I0F8DCX1Yh77pAkdYd2j-v9FoNYVUKTR_iE6Am1umliIzTAtd9-PSm6hfJxG0s2mA37hnIOjn8UApiJrCb9gDbbCQuh1xjrSOeZUan8GBrRHxrT2TuoPlj5kA4fOYDFkvDqZCTlzIHQXhlsiQm4an0b8y9V_7pUYjRRm5IK04s");'></div>
+<div class="flex-1 min-w-0">
+<p class="text-gray-700 text-xs line-clamp-1">Basic White Tee - Cotton</p>
+<p class="text-gray-900 text-sm font-bold font-mono">150.000₫</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</body></html>

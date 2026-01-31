@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Customer Profile Panel (Light Mode - Retro Pastel Blue)</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "blue-accent": "#BDE0FE", // Retro Pastel Blue
+                        "blue-dark": "#64B5F6",
+                        "blue-hover": "#90CAF9",
+                        "background-light": "#ffffff",
+                        "text-primary": "#1a1a1a",
+                        "text-secondary": "#666666",
+                        "card-border": "#e5e7eb",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "mono": ["JetBrains Mono", "monospace"],
+                    },
+                    backgroundImage: {
+                        'grid-pattern': "linear-gradient(to right, #cbd5e1 1px, transparent 1px), linear-gradient(to bottom, #cbd5e1 1px, transparent 1px)",
+                    },
+                    backgroundSize: {
+                        'grid-pattern': '24px 24px',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #cbd5e1;
+            border-radius: 20px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background-color: #94a3b8;
+        }
+    </style>
+</head>
+<body class="bg-[#f0f9ff] min-h-screen flex items-center justify-center font-display p-4 md:p-8 bg-grid-pattern bg-[length:24px_24px]">
+<div class="w-full max-w-[480px] bg-white rounded-none shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] border-2 border-black overflow-hidden flex flex-col max-h-[90vh]">
+<div class="bg-white z-20 sticky top-0 border-b-2 border-black">
+<div class="flex justify-between items-center px-6 pt-5 pb-2">
+<h2 class="text-text-primary text-xl font-bold font-mono tracking-tight">Customer.Profile</h2>
+<button class="text-black hover:bg-blue-accent transition-colors p-1 border border-transparent hover:border-black rounded-none">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="px-6 pb-6 pt-2 flex flex-col items-center gap-4 relative">
+<div class="absolute top-0 right-0 w-32 h-32 bg-blue-accent/30 blur-3xl rounded-full -z-10"></div>
+<div class="relative group cursor-pointer">
+<div class="bg-center bg-no-repeat bg-cover h-24 w-24 border-2 border-black shadow-[4px_4px_0px_0px_rgba(189,224,254,1)]" data-alt="Portrait of Sarah Jenkins, a smiling customer" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD8s8BACx7SkLIr8ls08yXInIM8SGFwM1XpkSTtZuSrCFr1BMejY4N8x5HqN6n6nNiRhM4rbj0fmQjAaQG0unlxDH0GMtiCWj1kekJLK1olA9p15nfGHPMW9nN_FY97GEOghHsOXEh9Td_6W5t5h9Un0YpDf24x6pwNq-CyhIpoxfCxqEBfu12iaWxDgB0xQPBw3znS26PHbkNEVdQTgtpNPYsWw-aO9Tr_uj-Pw06HyU5P0hpCo2pGfPb4l1_cYt5_CPkkEA6vo5g");'>
+</div>
+<div class="absolute -bottom-1 -right-1 h-4 w-4 bg-blue-accent border border-black" title="Online"></div>
+</div>
+<div class="flex flex-col items-center">
+<div class="flex items-center gap-2 mb-1">
+<h1 class="text-black text-2xl font-bold font-mono">Sarah Jenkins</h1>
+<span class="flex items-center justify-center px-1.5 py-0.5 border border-black bg-blue-accent text-black text-[10px] font-bold font-mono shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]" title="Sentiment Score: 92/100">92</span>
+</div>
+<div class="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-text-secondary text-sm font-medium mt-1 font-mono">
+<span class="flex items-center gap-1.5 hover:text-black transition-colors cursor-pointer group hover:bg-blue-accent/20 px-1 -mx-1">
+<span class="material-symbols-outlined text-[14px]">mail</span>
+                            sarah.j@example.com
+                        </span>
+<span class="flex items-center gap-1.5 hover:text-black transition-colors cursor-pointer hover:bg-blue-accent/20 px-1 -mx-1">
+<span class="material-symbols-outlined text-[14px]">call</span>
+                            +1 (555) 012-3456
+                        </span>
+</div>
+</div>
+<div class="flex flex-wrap justify-center gap-2 w-full mt-1">
+<div class="flex h-7 items-center justify-center gap-x-1.5 border border-black bg-blue-accent pl-3 pr-3 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+<span class="material-symbols-outlined text-black text-[14px]">diamond</span>
+<p class="text-black text-xs font-bold font-mono">VIP</p>
+</div>
+<div class="flex h-7 items-center justify-center border border-black bg-white pl-3 pr-3 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+<p class="text-black text-xs font-bold font-mono">High Risk</p>
+</div>
+<div class="flex h-7 items-center justify-center border border-black bg-blue-accent/20 pl-3 pr-3 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+<p class="text-black text-xs font-bold font-mono">Loyal</p>
+</div>
+</div>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto custom-scrollbar p-6 space-y-8 bg-white">
+<div class="grid grid-cols-4 gap-3">
+<button class="group flex flex-col items-center gap-2">
+<div class="flex items-center justify-center h-12 w-12 border border-black bg-white group-hover:bg-blue-accent transition-all shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] group-active:translate-x-[2px] group-active:translate-y-[2px] group-active:shadow-none">
+<span class="material-symbols-outlined text-black">add_shopping_cart</span>
+</div>
+<span class="text-xs font-bold font-mono text-black uppercase tracking-wider">Order</span>
+</button>
+<button class="group flex flex-col items-center gap-2">
+<div class="flex items-center justify-center h-12 w-12 border border-black bg-white group-hover:bg-blue-accent transition-all shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] group-active:translate-x-[2px] group-active:translate-y-[2px] group-active:shadow-none">
+<span class="material-symbols-outlined text-black">currency_exchange</span>
+</div>
+<span class="text-xs font-bold font-mono text-black uppercase tracking-wider">Refund</span>
+</button>
+<button class="group flex flex-col items-center gap-2">
+<div class="flex items-center justify-center h-12 w-12 border border-black bg-white group-hover:bg-blue-accent transition-all shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] group-active:translate-x-[2px] group-active:translate-y-[2px] group-active:shadow-none">
+<span class="material-symbols-outlined text-black">content_copy</span>
+</div>
+<span class="text-xs font-bold font-mono text-black uppercase tracking-wider">Email</span>
+</button>
+<button class="group flex flex-col items-center gap-2">
+<div class="flex items-center justify-center h-12 w-12 border border-black bg-white group-hover:bg-red-100 transition-all shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] group-active:translate-x-[2px] group-active:translate-y-[2px] group-active:shadow-none">
+<span class="material-symbols-outlined text-black">block</span>
+</div>
+<span class="text-xs font-bold font-mono text-black uppercase tracking-wider">Ban</span>
+</button>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="flex flex-col gap-1 p-4 border border-black bg-blue-accent shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] relative overflow-hidden group">
+<div class="absolute inset-0 bg-[linear-gradient(to_right,#000_1px,transparent_1px),linear-gradient(to_bottom,#000_1px,transparent_1px)] bg-[size:14px_14px] opacity-10 -z-10"></div>
+<div class="flex items-center gap-2 text-black mb-1">
+<span class="material-symbols-outlined text-[18px]">monetization_on</span>
+<p class="text-xs font-bold font-mono uppercase tracking-wider">LTV</p>
+</div>
+<p class="text-black text-3xl font-bold tracking-tight font-mono">$5,200</p>
+</div>
+<div class="flex flex-col gap-1 p-4 border border-black bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+<div class="flex items-center gap-2 text-text-secondary mb-1">
+<span class="material-symbols-outlined text-[18px]">shopping_bag</span>
+<p class="text-xs font-bold font-mono uppercase tracking-wider">AOV</p>
+</div>
+<p class="text-black text-2xl font-bold tracking-tight font-mono">$120</p>
+</div>
+<div class="flex flex-col gap-1 p-4 border border-black bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+<div class="flex items-center gap-2 text-text-secondary mb-1">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+<p class="text-xs font-bold font-mono uppercase tracking-wider">Last Order</p>
+</div>
+<p class="text-black text-lg font-bold tracking-tight font-mono">2 days ago</p>
+</div>
+<div class="flex flex-col gap-1 p-4 border border-black bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+<div class="flex items-center gap-2 text-text-secondary mb-1">
+<span class="material-symbols-outlined text-[18px]">receipt_long</span>
+<p class="text-xs font-bold font-mono uppercase tracking-wider">Total Orders</p>
+</div>
+<p class="text-black text-lg font-bold tracking-tight font-mono">45</p>
+</div>
+</div>
+<div class="flex flex-col gap-4 border-2 border-black bg-white p-5 relative overflow-hidden shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+<div class="absolute top-0 left-0 w-full h-1 bg-blue-accent"></div>
+<div class="flex items-center gap-2 relative z-10">
+<div class="w-8 h-8 flex items-center justify-center bg-black text-blue-accent">
+<span class="material-symbols-outlined text-lg">auto_awesome</span>
+</div>
+<h3 class="text-black text-sm font-bold font-mono uppercase">AI Insight: Return Inquiry</h3>
+</div>
+<p class="text-text-primary text-sm leading-relaxed relative z-10 font-medium">
+                    Sarah is asking about a return for <span class="bg-gray-100 px-1 border border-gray-200">Order #10234</span>. <br/>
+<span class="bg-blue-accent/50 px-1 font-bold">Note:</span> Policy allows free returns within 30 days.
+                </p>
+<button class="mt-2 w-full cursor-pointer flex items-center justify-center h-10 px-4 bg-blue-accent border border-black text-black text-sm font-bold font-mono uppercase tracking-wider hover:bg-blue-hover transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none">
+                    Initiate Return Process
+                </button>
+</div>
+<div class="flex flex-col gap-6">
+<div class="flex border-b-2 border-gray-100">
+<button class="flex-1 pb-3 text-sm font-bold text-black border-b-2 border-blue-accent font-mono">
+                        Orders
+                    </button>
+<button class="flex-1 pb-3 text-sm font-medium text-gray-400 hover:text-black transition-colors font-mono">
+                        Conversations
+                    </button>
+<button class="flex-1 pb-3 text-sm font-medium text-gray-400 hover:text-black transition-colors font-mono">
+                        Details
+                    </button>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex items-center justify-between p-4 border border-gray-200 hover:border-black hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all group cursor-pointer bg-white">
+<div class="flex items-start gap-4">
+<div class="h-10 w-10 border border-black bg-white flex items-center justify-center text-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] group-hover:bg-blue-accent transition-colors">
+<span class="material-symbols-outlined text-[20px]">package_2</span>
+</div>
+<div class="flex flex-col">
+<p class="text-black text-sm font-bold font-mono group-hover:underline decoration-blue-accent decoration-2 underline-offset-2">Order #10234</p>
+<p class="text-gray-500 text-xs mt-0.5">Oct 24, 2023</p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1">
+<span class="text-black text-sm font-bold font-mono">$120.00</span>
+<span class="px-1.5 py-0.5 text-[10px] font-bold bg-blue-accent text-black border border-black font-mono shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]">DELIVERED</span>
+</div>
+</div>
+<div class="flex items-center justify-between p-4 border border-gray-200 hover:border-black hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all group cursor-pointer bg-white">
+<div class="flex items-start gap-4">
+<div class="h-10 w-10 border border-black bg-white flex items-center justify-center text-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] group-hover:bg-blue-accent transition-colors">
+<span class="material-symbols-outlined text-[20px]">local_shipping</span>
+</div>
+<div class="flex flex-col">
+<p class="text-black text-sm font-bold font-mono group-hover:underline decoration-blue-accent decoration-2 underline-offset-2">Order #9921</p>
+<p class="text-gray-500 text-xs mt-0.5">Sep 12, 2023</p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1">
+<span class="text-black text-sm font-bold font-mono">$45.50</span>
+<span class="px-1.5 py-0.5 text-[10px] font-bold bg-orange-100 text-black border border-black font-mono shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]">RETURNED</span>
+</div>
+</div>
+<div class="flex items-center justify-between p-4 border border-gray-200 hover:border-black hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all group cursor-pointer bg-white">
+<div class="flex items-start gap-4">
+<div class="h-10 w-10 border border-black bg-white flex items-center justify-center text-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] group-hover:bg-blue-accent transition-colors">
+<span class="material-symbols-outlined text-[20px]">check_circle</span>
+</div>
+<div class="flex flex-col">
+<p class="text-black text-sm font-bold font-mono group-hover:underline decoration-blue-accent decoration-2 underline-offset-2">Order #8842</p>
+<p class="text-gray-500 text-xs mt-0.5">Aug 01, 2023</p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1">
+<span class="text-black text-sm font-bold font-mono">$210.00</span>
+<span class="px-1.5 py-0.5 text-[10px] font-bold bg-blue-accent text-black border border-black font-mono shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]">DELIVERED</span>
+</div>
+</div>
+</div>
+<div class="space-y-3 pt-4 border-t-2 border-gray-100">
+<button class="flex w-full items-center justify-between py-2 text-sm font-bold text-gray-600 hover:text-black transition-colors group">
+<span class="group-hover:translate-x-1 transition-transform">Shipping Addresses</span>
+<span class="material-symbols-outlined text-[20px] bg-gray-100 group-hover:bg-blue-accent p-1 border border-transparent group-hover:border-black transition-all">expand_more</span>
+</button>
+<button class="flex w-full items-center justify-between py-2 text-sm font-bold text-gray-600 hover:text-black transition-colors group">
+<span class="group-hover:translate-x-1 transition-transform">Payment Methods</span>
+<span class="material-symbols-outlined text-[20px] bg-gray-100 group-hover:bg-blue-accent p-1 border border-transparent group-hover:border-black transition-all">expand_more</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+
+</body></html>
